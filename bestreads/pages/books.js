@@ -4,7 +4,7 @@ import supabase from "../lib/supabase";
 import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
 import Wrapper from "../components/Global/Wrapper";
-import BookCard from "../components/BookCard/BookCard";
+import BookCard from "../components/BookCard/GoogleBookCard";
 
 export default function Home() {
   const router = useRouter();

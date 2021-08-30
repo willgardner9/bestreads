@@ -6,6 +6,7 @@ import CalendarSvg from "./CalendarSvg";
 import TagSvg from "./TagSvg";
 import PagesSvg from "./PagesSvg";
 import IconLabel from "./IconLabel";
+import {Rating, RatingView} from "react-simple-star-rating";
 
 export default function BookCard({book}) {
   //  wait for async props to load
@@ -20,6 +21,7 @@ export default function BookCard({book}) {
 
   //  checks if the user has already saved the book to their to read / already read list
   const [bookAlreadySaved, setBookAlreadySaved] = useState(false);
+  const [bookRating, setBookRating] = useState(null);
   const [bookAlreadySavedAndRead, setBookAlreadySavedAndRead] = useState(false);
 
   useEffect(() => {
@@ -32,6 +34,7 @@ export default function BookCard({book}) {
 
       if (data.length) {
         setBookAlreadySaved(true);
+        setBookRating(data[0].user_rating);
         data[0].finished
           ? setBookAlreadySavedAndRead(true)
           : setBookAlreadySavedAndRead(false);
@@ -73,7 +76,10 @@ export default function BookCard({book}) {
     if (data.length && finishedBoolean) {
       setNotFinishedButtonState("hidden");
       setFinishedButtonState("success");
-      setFinishedButtonText("added to your read list");
+      setShowStarRatingComponent(false);
+      setFinishedButtonText(
+        `added to your read list with a ${rating} star rating`
+      );
     }
     if (data.length && !finishedBoolean) {
       setFinishedButtonState("hidden");
@@ -81,6 +87,15 @@ export default function BookCard({book}) {
       setNotFinishedButtonText("added to your to read list");
     }
     if (error) console.error(error);
+  };
+
+  const [showStarRatingComponent, setShowStarRatingComponent] = useState(false);
+
+  const [rating, setRating] = useState(0);
+
+  // Catch Rating value
+  const handleRating = async (rate) => {
+    return await addBook(true, rate);
   };
 
   //  styles for google books api thumbnail images
@@ -127,7 +142,9 @@ export default function BookCard({book}) {
             {/* user has already saved the book to their 'want to read' or 'already read' list */}
             <Button
               text={
-                bookAlreadySavedAndRead ? "already finished" : "on reading list"
+                bookAlreadySavedAndRead
+                  ? `already read, rated ${bookRating} stars`
+                  : "on reading list"
               }
               status={"neutral"}
               onClick={null}
@@ -136,12 +153,21 @@ export default function BookCard({book}) {
         ) : (
           <div className="flex flex-col sm:flex-row mt-6">
             {/* already read button will insert book into table with finished boolean set to true, finished year set to current year, and user rating prompted and added */}
-            <Button
-              text={finishedButtonText}
-              onClick={() => addBook(true, 3)}
-              status={finishedButtonState}
-            />
-
+            {showStarRatingComponent ? (
+              <div className="flex items-center mr-4">
+                <Rating
+                  onClick={handleRating}
+                  ratingValue={rating}
+                  transition
+                />
+              </div>
+            ) : (
+              <Button
+                text={finishedButtonText}
+                onClick={() => setShowStarRatingComponent(true)}
+                status={finishedButtonState}
+              />
+            )}
             {/* want to read button will insert book into table with finished boolean set to false, finished year set to null, and user rating set to null */}
             <Button
               text={notFinishedButtonText}
