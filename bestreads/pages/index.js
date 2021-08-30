@@ -31,7 +31,10 @@ export default function Home() {
       if (data) {
         setChallenge(data[0]);
       } else {
-        console.error(error);
+        //  jwt has expired reload page to get new access token
+        if (error.message === "JWT expired") {
+          router.reload(window.location.pathname);
+        }
       }
     };
     fetchChallenge();

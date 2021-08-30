@@ -4,7 +4,7 @@ import supabase from "../lib/supabase";
 import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
 import Wrapper from "../components/Global/Wrapper";
-import BookCard from "../components/Global/BookCard";
+import BookCard from "../components/BookCard/BookCard";
 
 export default function Home() {
   const router = useRouter();
@@ -25,7 +25,6 @@ export default function Home() {
       )
         .then((res) => res.json())
         .then((res) => {
-          console.log(res);
           setBooks(res);
         });
     };
@@ -40,7 +39,7 @@ export default function Home() {
       </Head>
       <Header />
       <Wrapper>
-        <section className="mx-auto mt-12 max-w-3xl">
+        <section className="mx-auto max-w-3xl divide-y">
           {books
             ? books.items.map((book, i) => <BookCard book={book} key={i} />)
             : ""}

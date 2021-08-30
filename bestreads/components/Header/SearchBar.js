@@ -7,6 +7,9 @@ export default function SearchBar() {
 
   const handleKeyDown = async (e) => {
     if (e.key === "Enter") {
+      if (!searchQuery) {
+        return;
+      }
       router.push(`/books?search=${searchQuery}`);
     }
   };
@@ -14,7 +17,7 @@ export default function SearchBar() {
     <input
       type="text"
       htmlFor="search-bar"
-      placeholder="search for books"
+      placeholder="search for books or authors"
       onChange={(e) => setSearchQuery(e.target.value)}
       onKeyDown={(e) => handleKeyDown(e)}
       className="border-l border-r border-b border-gray-200 h-16 w-1/2 p-4 text-sm outline-none transition-all duration-75 outline-none hover:border-gray-300 hover:shadow-sm focus:border-gray-300"

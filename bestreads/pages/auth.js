@@ -63,7 +63,7 @@ export default function Home() {
               className="w-64 mt-6 border border-gray-200 p-4 text-sm outline-none transition-all duration-75 outline-none hover:border-gray-300 hover:shadow-sm focus:border-gray-300 focus:bg-gray-50"
             />
           </label>
-          <button className="mt-6 bg-black text-white text-xs font-semibold p-4 transition-all duration-75 border-2 border-white active:bg-white active:border-2 active:border-black active:text-black">
+          <button className="mt-6 bg-black text-white text-xs font-semibold p-4 transition-all duration-75 border-2 border-black active:bg-white active:border-2 active:border-black active:text-black">
             {loading ? "signing in..." : "sign in"}
           </button>
         </form>
