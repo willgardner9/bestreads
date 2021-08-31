@@ -13,14 +13,8 @@ export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
-    console.log(supabase.auth.currentUser);
     if (supabase.auth.currentUser) return router.push("/");
-  }, [
-    supabase.auth.currentUser,
-    router,
-    router.isReady,
-    router.query.redirect,
-  ]);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
