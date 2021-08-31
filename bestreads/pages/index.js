@@ -13,8 +13,9 @@ export default function Home() {
 
   //  auth
   useEffect(() => {
-    if (!supabase.auth.currentUser) return router.push("/auth");
-  }, [supabase.auth.currentUser]);
+    if (!supabase.auth.currentUser && router.asPath.length < 10)
+      return router.push("/auth");
+  }, [supabase.auth.currentUser, router.isReady]);
 
   if (!supabase.auth.currentUser) return null;
 
