@@ -14,7 +14,7 @@ export default function Home() {
 
   useEffect(() => {
     if (supabase.auth.currentUser) return router.push("/");
-  }, []);
+  }, [supabase.auth.currentUser]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

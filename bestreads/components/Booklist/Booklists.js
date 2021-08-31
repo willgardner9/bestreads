@@ -51,7 +51,7 @@ export default function Booklists() {
     fetchWantToReadBooks();
   }, [router.query.read]);
   return (
-    <div className="mt-12 flex flex-col md:flex-row">
+    <div className="mt-12 mb-6 flex flex-col md:flex-row">
       <List
         listTitle="already read"
         listBooks={alreadyReadBooks}
