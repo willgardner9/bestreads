@@ -13,7 +13,6 @@ export default function Home() {
 
   //  auth
   useEffect(() => {
-    console.log("supabase auth", supabase.auth);
     if (!supabase.auth.currentUser) return router.push("/auth");
   }, [supabase.auth.currentUser]);
 
