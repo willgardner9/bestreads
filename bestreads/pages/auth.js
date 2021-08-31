@@ -29,7 +29,7 @@ export default function Home() {
     //  if auth error, set loading to false for ui and set error message
     if (error) {
       setLoading(false);
-      setError("something went wrong... try again soon");
+      return setError("something went wrong... try again soon");
     }
     //  auth success, set loading to false for ui and set success true for ui
     setLoading(false);
