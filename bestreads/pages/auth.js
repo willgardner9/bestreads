@@ -13,17 +13,14 @@ export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
-    if (supabase.auth.currentUser) {
-      console.log("im here");
-      return router.push("/");
-    }
+    if (supabase.auth.currentUser) return router.push("/");
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     //  check email is provided. If not, set error message
     if (!email) {
-      return setError("You need to provide an email");
+      return setError("you need to provide an email");
     }
     //  set loading to true for ui
     setLoading(true);
