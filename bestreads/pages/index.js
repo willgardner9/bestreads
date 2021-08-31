@@ -13,7 +13,8 @@ export default function Home() {
 
   //  auth
   useEffect(() => {
-    if (!supabase.auth.currentUser) return router.push("/auth");
+    if (!supabase.auth.currentUser)
+      return router.push("/auth?redirect=not-logged-in");
   }, [supabase.auth.currentUser]);
 
   if (!supabase.auth.currentUser) return null;
