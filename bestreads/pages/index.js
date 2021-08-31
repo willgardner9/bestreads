@@ -6,7 +6,7 @@ import {useRouter} from "next/router";
 import {useEffect} from "react";
 const Wrapper = dynamic(() => import("../components/Global/Wrapper.js"));
 import Challenge from "../components/Challenge/Challenge";
-import Booklists from "../components/BookList/Booklists";
+import Booklists from "../components/Booklist/Booklists";
 
 export default function Home() {
   const router = useRouter();
