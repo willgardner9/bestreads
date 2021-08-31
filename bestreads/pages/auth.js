@@ -41,7 +41,7 @@ export default function Home() {
   };
 
   const sectionStyles = {
-    "margin-top": "30vh",
+    marginTop: "30vh",
   };
 
   return (
