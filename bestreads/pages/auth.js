@@ -40,13 +40,20 @@ export default function Home() {
     setError(false);
   };
 
+  const sectionStyles = {
+    "margin-top": "30vh",
+  };
+
   return (
     <>
       <Head>
         <title>Bestreads</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <section className="mt-24 mx-auto flex flex-col items-center justify-center">
+      <section
+        style={sectionStyles}
+        className="mx-auto flex flex-col items-center justify-center"
+      >
         <BestreadsLogo />
         <form className="flex flex-col mt-6" onSubmit={handleSubmit}>
           <label
