@@ -75,7 +75,7 @@ export default function Home() {
           ""
         )}
         {success ? (
-          <div className="mt-6 p-4 border border-green-600 text-green-600 text-xs">
+          <div className="mt-6 p-4 border border-green-500 text-green-500 text-xs">
             success! check your inbox for your login link
           </div>
         ) : (

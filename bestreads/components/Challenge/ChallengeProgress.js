@@ -1,4 +1,4 @@
-export default function Challenge({challenge}) {
+export default function ChallengeProgress({challenge}) {
   //  wait for async props to load
   if (!challenge) return null;
 

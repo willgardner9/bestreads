@@ -13,6 +13,8 @@ export default function DbBookCard({book}) {
   const router = useRouter();
   const [rating, setRating] = useState(0); // initial rating value
 
+  const [showRating, setShowRating] = useState(false);
+
   // Catch Rating value
   const handleRating = async (rate) => {
     const {data, error} = await supabase
@@ -24,7 +26,6 @@ export default function DbBookCard({book}) {
     if (error) console.error(error);
   };
 
-  //  styles for google books api thumbnail images
   return (
     <section className="mt-6 mb-4 w-full flex flex-col items-start md:flex-row">
       <img className="h-28 md:pr-4" src={book.book_thumbnail} />
@@ -67,16 +68,21 @@ export default function DbBookCard({book}) {
         </div>
         {book.finished ? (
           ""
+        ) : showRating ? (
+          <Rating
+            onClick={handleRating}
+            ratingValue={rating}
+            className="mt-2"
+            size="16"
+            transition
+          />
         ) : (
-          <>
-            <Rating
-              onClick={handleRating}
-              ratingValue={rating}
-              className="mt-2"
-              size="16"
-              transition
-            />
-          </>
+          <button
+            onClick={() => setShowRating(true)}
+            className="text-xs text-gray-500 w-max mt-2 hover:underline"
+          >
+            finished reading
+          </button>
         )}
       </div>
     </section>

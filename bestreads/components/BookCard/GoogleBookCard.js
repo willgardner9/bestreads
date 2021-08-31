@@ -15,7 +15,8 @@ export default function BookCard({book}) {
   if (
     !book.volumeInfo.authors ||
     !book.volumeInfo.imageLinks ||
-    !book.volumeInfo.categories
+    !book.volumeInfo.categories ||
+    !book.volumeInfo.pageCount
   )
     return null;
 
