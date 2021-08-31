@@ -14,7 +14,8 @@ export default function Booklists() {
         .from("books")
         .select()
         .eq("user", supabase.auth.currentUser.id)
-        .eq("finished", true);
+        .eq("finished", true)
+        .order("updated_at", {ascending: false});
 
       if (data) {
         setalreadyReadBooks(data);
@@ -37,7 +38,8 @@ export default function Booklists() {
         .from("books")
         .select()
         .eq("user", supabase.auth.currentUser.id)
-        .eq("finished", false);
+        .eq("finished", false)
+        .order("updated_at", {ascending: false});
 
       if (data) {
         setwantToReadBooks(data);

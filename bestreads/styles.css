@@ -1,0 +1,15 @@
+@keyframes progress-bar {
+  from {
+    transform: scaleX(0%);
+  }
+  to {
+    transform: scaleX(100%);
+  }
+}
+
+#progress-bar {
+  background-color: black;
+  animation: progress-bar cubic-bezier(0.075, 0.82, 0.165, 1) 1.5s;
+  transform-origin: left center;
+  transition: width cubic-bezier(0.075, 0.82, 0.165, 1) 1.5s;
+}
