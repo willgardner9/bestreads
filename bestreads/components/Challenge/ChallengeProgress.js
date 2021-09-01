@@ -20,7 +20,7 @@ export default function ChallengeProgress({challenge}) {
       </div>
       <h3 className="text-xs text-gray-500 mt-2">
         {challenge.current_books} out of {challenge.target_books} books read (
-        {(challenge.current_books / challenge.target_books) * 100}%)
+        {Math.round((challenge.current_books / challenge.target_books) * 100)}%)
       </h3>
     </section>
   );
