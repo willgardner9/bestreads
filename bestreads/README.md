@@ -7,6 +7,8 @@ Bestreads is a web app that allows you to create a private list of books you wan
 
 [View source code](https://github.com/willgardner9/bestreads/tree/main/bestreads)
 
+[View demo](https://www.youtube.com/watch?v=Ufn0FVb5Wcc)
+
 ## Technology
 
 - React.js
